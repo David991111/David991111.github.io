@@ -1,1 +1,1 @@
-# David991111.github.io
+Olası müstehcen görüntülerden sorumlu değilimdir.
