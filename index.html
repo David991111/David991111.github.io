@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rastgele Anime Önerisi</title>
+    <style>
+        body {
+            background-color: #2c3e50;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            align-items: center;
+        }
+        h1 {
+            font-size: 2rem;
+        }
+        button {
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 15px;
+        }
+        button:hover {
+            background-color: #023305;
+        }
+        img {
+            margin-top: 10px;
+            border-radius: 25px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            max-width: 300px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎌 Rastgele Anime Önerisi 🎌</h1>
+    <button onclick="getRandomAnime()">Yeni Anime Öner</button>
+    <h2 id="animeTitle">Anime Adı Buraya Gelecek</h2>
+    <img id="animeImage" src="" width="300" alt="Anime resmi">
+
+    <script>
+        function getRandomAnime() {
+            fetch("https://api.jikan.moe/v4/random/anime")
+                .then(response => response.json())  
+                .then(data => {
+                    document.getElementById("animeTitle").innerText = data.data.title;
+                    document.getElementById("animeImage").src = data.data.images.jpg.image_url;
+                })
+                .catch(error => console.error("Hata oluştu:", error));  
+        }
+
+        getRandomAnime();
+   
+    </script>
+</body>
+</html>
